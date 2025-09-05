@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Portfolio{% endblock %}</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="{{ url_for('static', filename='main.css') }}">
+        {% block head %}{% endblock %}
+    </head>
+    <body>
+        <header class="site-header">
+            <div class="container nav-container">
+                <a class="logo" href="{{ url_for('home') }}">
+                    <div class="logo-content">
+                        <img class="logo-avatar" src="{{ url_for('static', filename='profile.jpeg') }}" alt="Abdulrhman Mohammed Badr">
+                        <div class="logo-text-content">
+                            <span class="logo-text">Abdulrhman Mohammed Badr</span>
+                            <span class="logo-subtitle">AI & Data Science Specialist</span>
+                        </div>
+                    </div>
+                </a>
+                <nav class="nav">
+                    <ul class="menu">
+                        <li><a href="{{ url_for('home') }}" class="nav-link">Home</a></li>
+                        <li><a href="{{ url_for('about') }}" class="nav-link">About</a></li>
+                        <li><a href="{{ url_for('projects') }}" class="nav-link">Projects</a></li>
+                        <li><a href="{{ url_for('contact') }}" class="nav-link">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main class="container">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <div class="flash-stack">
+                        {% for category, message in messages %}
+                            <div class="flash {{ category }}">{{ message }}</div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            {% endwith %}
+            {% block content %}{% endblock %}
+        </main>
+        <footer class="site-footer">
+            <div class="container">
+                <p>© {{ current_year }} ZBDA · All rights reserved.</p>
+            </div>
+        </footer>
+        <button id="backToTop" class="btn btn-ghost" style="position:fixed; right:16px; bottom:16px; display:none;">up</button>
+        <script>
+        // Smooth scroll for internal links
+        document.addEventListener('click', function(e){
+            const a = e.target.closest('a[href^="#"]');
+            if(!a) return;
+            const el = document.querySelector(a.getAttribute('href'));
+            if(el){ e.preventDefault(); el.scrollIntoView({behavior:'smooth'}); }
+        });
+        // Reveal-on-scroll
+        const revealEls = document.querySelectorAll('[data-reveal]');
+        const io = new IntersectionObserver((entries)=>{
+            entries.forEach(en=>{ if(en.isIntersecting){ en.target.classList.add('reveal-in'); io.unobserve(en.target); } });
+        }, { threshold: 0.12 });
+        revealEls.forEach(el=>io.observe(el));
+        // Back to top
+        const topBtn = document.getElementById('backToTop');
+        window.addEventListener('scroll', ()=>{ topBtn.style.display = window.scrollY > 400 ? 'block' : 'none'; });
+        topBtn?.addEventListener('click', ()=> window.scrollTo({top:0, behavior:'smooth'}));
+        </script>
+        <style>
+          [data-reveal]{ opacity:0; transform: translateY(12px); transition: opacity .4s ease, transform .4s ease; }
+          .reveal-in{ opacity:1 !important; transform: translateY(0) !important; }
+        </style>
+        {% block scripts %}{% endblock %}
+    </body>
+    </html>

@@ -1,0 +1,29 @@
+{%extends "layout.html"%}
+{% block title %}Contact · Portfolio{% endblock %}
+{% block content %}
+<section>
+    <h1 style="margin-top:0;">Contact</h1>
+    <p class="hero-subtitle">Want to work together? Send a message.</p>
+    <form action="{{ url_for('contact') }}" method="post" class="card form" style="margin-top: 16px;">
+        <label>
+            <span>Name</span><br>
+            <input name="name" required class="input" placeholder="Your name">
+        </label>
+        <label>
+            <span>Email</span><br>
+            <input name="email" type="email" required class="input" placeholder="you@email.com">
+        </label>
+        <label>
+            <span>Message</span><br>
+            <textarea name="message" rows="5" required class="textarea"></textarea>
+        </label>
+        <button class="btn btn-primary" type="submit" style="width:max-content;">Send</button>
+        
+    </form>
+    <p style="color:var(--muted); margin-top:12px;">Or email me at <a href="mailto:bedoobadr997@gmail.com">bedoobadr997@gmail.com</a>.</p>
+    
+</section>
+{% endblock %}
+
+
+

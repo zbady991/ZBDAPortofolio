@@ -1,0 +1,52 @@
+{%extends "layout.html"%}
+{% block title %}Messages · Portfolio{% endblock %}
+{% block content %}
+<section class="section">
+    <h1>Contact Messages {% if is_admin %}<span style="color:var(--muted); font-size:14px;">(admin)</span>{% endif %}</h1>
+    <form method="get" action="{{ url_for('admin_messages') }}" class="card" style="margin-top:12px; display:flex; gap:8px; align-items:center;">
+        <input class="input" name="q" value="{{ q or '' }}" placeholder="Search name, email, or message" style="flex:1;">
+        <button class="btn btn-primary" type="submit">Search</button>
+        <a class="btn btn-ghost" href="{{ url_for('admin_messages_export_csv') }}">Export CSV</a>
+    </form>
+
+    <div class="card" style="margin-top:12px; overflow:auto;">
+        {% if messages %}
+            <table style="width:100%; border-collapse:collapse;">
+                <thead>
+                    <tr style="text-align:left;">
+                        <th style="padding:8px;">Name</th>
+                        <th style="padding:8px;">Email</th>
+                        <th style="padding:8px;">Message</th>
+                        <th style="padding:8px;">Created</th>
+                        <th style="padding:8px;">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for m in messages %}
+                    <tr>
+                        <td style="padding:8px;">{{ m.name }}</td>
+                        <td style="padding:8px;">{{ m.email }}</td>
+                        <td style="padding:8px; white-space:pre-wrap; max-width:520px;">{{ m.message }}</td>
+                        <td style="padding:8px; color:var(--muted);">{{ m.created_at }}</td>
+                        <td style="padding:8px;">
+                            <form method="post" action="{{ url_for('admin_messages_delete', message_id=m.id) }}" onsubmit="return confirm('Delete this message?');">
+                                <button class="btn btn-ghost" type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p class="hero-subtitle">No messages found.</p>
+        {% endif %}
+    </div>
+
+    <div class="cta-row" style="margin-top:12px;">
+        <a class="btn btn-ghost" href="{{ url_for('home') }}">Back to Home</a>
+        {% if is_admin %}<a class="btn btn-ghost" href="{{ url_for('admin_logout') }}">Logout</a>{% endif %}
+    </div>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,186 @@
+{%extends "layout.html"%}
+{% block title %}Home · Portfolio{% endblock %}
+{% block content %}
+
+<!-- Hero Section -->
+<section class="hero" data-reveal>
+    <div class="hero-content">
+        <div class="hero-text">
+            <div class="hero-intro">
+                <h1 class="hero-title">Hi, I'm <span class="gradient-text">Abdulrhman Mohammed Badr</span></h1>
+                <p class="hero-subtitle">AI & Data Science specialist focused on building useful ML, clean data pipelines, and clear analytics. I care about practical impact, performance, and readable code.</p>
+                
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <span class="meta-icon">📍</span>
+                        <span>Based in Egypt · Open to freelance and full‑time opportunities</span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📧</span>
+                        <span>Email: <a href="mailto:bedoobadr997@gmail.com">bedoobadr997@gmail.com</a></span>
+                    </div>
+                    <div class="meta-item">
+                        <span class="meta-icon">📞</span>
+                        <span>Phone: <a href="tel:+201554663927">+201554663927</a></span>
+                    </div>
+                </div>
+                
+                <div class="hero-cta">
+                    <a class="btn btn-primary" href="{{ url_for('projects') }}">View My Work</a>
+                    <a class="btn btn-ghost" href="{{ url_for('contact') }}">Let's Connect</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <img class="hero-photo" src="{{ url_for('static', filename='profile.jpeg') }}" alt="Abdulrhman Mohammed Badr" loading="lazy">
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="section about-section" data-reveal>
+    <div class="container">
+        <div class="section-header">
+            <h2>About Me</h2>
+            <p>Passionate about transforming data into actionable insights</p>
+        </div>
+        <div class="about-content">
+            <div class="about-text">
+                <p>I'm a passionate AI and Data Science professional with expertise in machine learning, data engineering, and analytics. With a strong foundation in Python, SQL, and modern data technologies, I specialize in transforming complex data into actionable insights and building production-ready ML solutions.</p>
+                <p>My journey in data science began with a fascination for patterns and predictions. I've worked on diverse projects ranging from predictive modeling to real-time data processing, always focusing on creating solutions that deliver real business value.</p>
+                <p>Looking ahead, my goal is to contribute to impactful AI solutions that solve real-world problems, especially in [NLP, Computer Vision, or Analytics — pick your focus].</p>
+            </div>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h4>Core Technologies</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">SQL</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">Pandas</span>
+                        <span class="skill-tag">NumPy</span>
+                        <span class="skill-tag">Flask</span>
+                        <span class="skill-tag">PyTorch</span>
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">SciPy</span>
+                        <span class="skill-tag">OpenCV</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h4>Specializations</h4>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Machine Learning</span>
+                        <span class="skill-tag">Data Engineering</span>
+                        <span class="skill-tag">Analytics</span>
+                        <span class="skill-tag">Data Visualization</span>
+                        <span class="skill-tag">Computer Vision</span>
+                        <span class="skill-tag">Natural Language Processing</span>
+                        <span class="skill-tag">Data Analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="section stats-section" data-reveal>
+    <div class="container">
+        <div class="section-header">
+            <h2>My Impact</h2>
+            <p>Numbers that speak to my expertise and dedication</p>
+        </div>
+        <div class="stats">
+            <div class="metric">
+                <p class="num">5+<span style="color:var(--accent);"> projects</span></p>
+                <p class="label">Delivered end‑to‑end</p>
+            </div>
+            <div class="metric">
+                <p class="num">3+<span style="color:var(--accent);"> ML</span></p>
+                <p class="label">Production‑ready models</p>
+            </div>
+            <div class="metric">
+                <p class="num">100%<span style="color:var(--accent);"> focus</span></p>
+                <p class="label">on clarity and results</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section class="section services-section" data-reveal>
+    <div class="container">
+        <div class="section-header">
+            <h2>What I Do</h2>
+            <p>Comprehensive data science solutions tailored to your needs</p>
+        </div>
+        <div class="grid-3">
+            <div class="service-card">
+                <div class="service-icon">🤖</div>
+                <h3>Machine Learning</h3>
+                <p>Supervised/unsupervised models, feature engineering, evaluation and deployment. Building intelligent systems that learn and adapt.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">⚙️</div>
+                <h3>Data Engineering</h3>
+                <p>ETL pipelines, data cleaning, SQL, and reproducible workflows. Creating robust data infrastructure for scalable solutions.</p>
+            </div>
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Analytics & Visualization</h3>
+                <p>Exploratory analysis, dashboards, and insights that inform action. Turning complex data into clear, actionable stories.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="section contact-section" data-reveal>
+    <div class="contact-content">
+        <div class="contact-header">
+            <h2>Let's Work Together</h2>
+            <p>Ready to turn your data into insights? I'm here to help you build amazing AI solutions and data-driven applications.</p>
+        </div>
+        
+        <div class="contact-grid">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email Me</h3>
+                <p>For project inquiries and collaborations</p>
+                <a href="mailto:bedoobadr997@gmail.com" class="contact-link">bedoobadr997@gmail.com</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <p>Connect with me professionally</p>
+                <a href="https://www.linkedin.com/in/abdulrahman-mohammed-458991302/" target="_blank" rel="noopener" class="contact-link">View Profile</a>
+            </div>
+            
+            <div class="contact-card">
+                <div class="contact-icon">💬</div>
+                <h3>Quick Chat</h3>
+                <p>Let's discuss your project needs</p>
+                <a href="{{ url_for('contact') }}" class="contact-link">Send Message</a>
+            </div>
+        </div>
+        
+        <div class="socials">
+            <h3>Follow My Work</h3>
+            <div class="social-links">
+                <a class="btn btn-ghost" href="https://github.com/zbady991" target="_blank" rel="noopener">
+                    <span class="social-icon">🐙</span> GitHub
+                </a>
+                <a class="btn btn-ghost" href="https://www.kaggle.com/abdelrahmanmo911" target="_blank" rel="noopener">
+                    <span class="social-icon">🏆</span> Kaggle
+                </a>
+                <a class="btn btn-ghost" href="https://medium.com/@bedoobadr997" target="_blank" rel="noopener">
+                    <span class="social-icon">📝</span> Medium
+                </a>
+                <a class="btn btn-ghost" href="https://www.behance.net/bedoobadr991" target="_blank" rel="noopener">
+                    <span class="social-icon">🎨</span> Behance
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
